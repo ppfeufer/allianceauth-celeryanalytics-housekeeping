@@ -1,0 +1,5 @@
+/build/
+/dist/
+/*.egg-info/
+/yf_templates/__pycache__/
+.idea/
