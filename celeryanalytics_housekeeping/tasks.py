@@ -17,6 +17,7 @@ def run_housekeeping():
         from datetime import datetime, timedelta
 
         # Third Party
+        import pytz
         from celeryanalytics.models import CeleryTaskCompleted, CeleryTaskFailed
 
         # Django
@@ -29,12 +30,16 @@ def run_housekeeping():
 
         with transaction.atomic():
             CeleryTaskCompleted.objects.filter(
-                time__lte=datetime.now()
-                - timedelta(days=CELERYANALYTICS_HOUSEKEEPING_DB_BACKLOG)
+                time__lte=pytz.utc.localize(
+                    datetime.now()
+                    - timedelta(days=CELERYANALYTICS_HOUSEKEEPING_DB_BACKLOG)
+                )
             ).delete()
 
         with transaction.atomic():
             CeleryTaskFailed.objects.filter(
-                time__lte=datetime.now()
-                - timedelta(days=CELERYANALYTICS_HOUSEKEEPING_DB_BACKLOG)
+                time__lte=pytz.utc.localize(
+                    datetime.now()
+                    - timedelta(days=CELERYANALYTICS_HOUSEKEEPING_DB_BACKLOG)
+                )
             ).delete()

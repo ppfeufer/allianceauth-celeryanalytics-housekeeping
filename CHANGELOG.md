@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [0.0.1-alpha.4] - 2022-01-04
+
+### Fixed
+
+- RuntimeWarning: DateTimeField CeleryTaskFailed.time received a naive datetime
+  while time zone support is active.
+
+
 ## [0.0.1-alpha.3] - 2022-01-04
 
 ### Changed
