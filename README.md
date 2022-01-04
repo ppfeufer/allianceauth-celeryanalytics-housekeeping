@@ -1,5 +1,13 @@
-# allianceauth-celeryanalytics-housekeeping
+# Alliance Auth Celery Analytics Housekeeping
 Housekeeping for Alliance Auth Celery Analytics
+
+```shell
+pip install allianceauth-celeryanalytics-housekeeping
+```
+
+In `local.py` add `celeryanalytics_housekeeping` to your `INSTALLED_APPS`.
+
+Also add the following:
 
 ```python
 ## AA Celery Analytics Housekeeping
