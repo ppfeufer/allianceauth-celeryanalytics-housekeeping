@@ -13,6 +13,6 @@ if (
     # Run every hour
     CELERYBEAT_SCHEDULE["celeryanalytics_housekeeping.tasks.run_housekeeping"] = {
         "task": "celeryanalytics_housekeeping.tasks.run_housekeeping",
-        "schedule": crontab(minute=0, hour="*/1"),
+        "schedule": crontab(minute=0, hour=0),
     }
 ```
