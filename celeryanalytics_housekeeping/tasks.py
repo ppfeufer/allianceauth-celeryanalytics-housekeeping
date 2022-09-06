@@ -1,3 +1,7 @@
+"""
+Tasks
+"""
+
 # Third Party
 from celery import shared_task
 

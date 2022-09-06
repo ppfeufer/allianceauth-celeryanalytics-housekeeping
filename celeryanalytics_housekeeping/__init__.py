@@ -1,1 +1,5 @@
-__version__ = "0.0.1-alpha.4"
+"""
+Init
+"""
+
+__version__: str = "0.0.1-alpha.5"

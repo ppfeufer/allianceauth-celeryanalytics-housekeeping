@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [0.0.1-alpha.5] - 2022-09-06
+
+### Changed
+
+- Compatibility with AA 3.x
+
+
 ## [0.0.1-alpha.4] - 2022-01-04
 
 ### Fixed
