@@ -58,42 +58,6 @@ repos:
             static/(.*)/libs/
           )
 
-  - repo: https://github.com/pre-commit/mirrors-eslint
-    rev: v8.49.0
-    hooks:
-      - id: eslint
-        exclude: |
-          (?x)(
-            .min(.js|.js.map)|
-            static/(.*)/libs/
-          )
-
-  - repo: https://github.com/thibaudcolas/pre-commit-stylelint
-    rev: v15.10.3
-    hooks:
-      - id: stylelint
-        exclude: |
-          (?x)(
-            .min(.css|.css.map)|
-            static/(.*)/libs/
-          )
-        args:
-          - --formatter=compact
-        additional_dependencies:
-          # stylelint itself needs to be here when using additional_dependencies.
-          - stylelint@15.10.3  # https://github.com/stylelint/stylelint/releases/latest
-          - stylelint-config-standard@34.0.0  # https://github.com/stylelint/stylelint-config-standard/releases/latest
-
-  - repo: https://github.com/pre-commit/pygrep-hooks
-    rev: v1.10.0
-    hooks:
-      - id: python-check-blanket-noqa  # Enforce that noqa annotations always occur with specific codes. Sample annotations: # noqa: F401, # noqa: F401,W203
-      - id: python-check-blanket-type-ignore  # Enforce that # type: ignore annotations always occur with specific codes. Sample annotations: # type: ignore[attr-defined], # type: ignore[attr-defined, name-defined]
-      - id: python-check-mock-methods  # Prevent common mistakes of assert mck.not_called(), assert mck.called_once_with(...) and mck.assert_called
-      - id: python-no-eval  # A quick check for the eval() built-in function
-      - id: python-no-log-warn  #  A quick check for the deprecated .warn() method of python loggers
-      - id: python-use-type-annotations  # Enforce that python3.6+ type annotations are used instead of type comments
-
   - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
     rev: 2.7.2
     hooks:
@@ -104,6 +68,14 @@ repos:
             .min(.css|.css.map|.js|.js.map)|
             static/(.*)/libs/
           )
+
+  - repo: https://github.com/pre-commit/pygrep-hooks
+    rev: v1.10.0
+    hooks:
+      - id: python-check-mock-methods
+      - id: python-no-log-warn
+      - id: python-use-type-annotations
+      - id: text-unicode-replacement-char
 
   - repo: https://github.com/adamchainz/django-upgrade
     rev: 1.14.1
@@ -129,8 +101,8 @@ repos:
     hooks:
       - id: yesqa
 
-  - repo: https://github.com/PyCQA/isort
-    rev: 5.12.0
+  - repo: https://github.com/pre-commit/mirrors-isort
+    rev: v5.10.1
     hooks:
       - id: isort
 
@@ -154,43 +126,3 @@ repos:
           - black==23.9.1  # https://github.com/psf/black/releases/latest
         args:
           - --target-version=py38
-
-  - repo: https://github.com/executablebooks/mdformat
-    rev: 0.7.17
-    hooks:
-      - id: mdformat
-        exclude: |
-          (?x)(
-            .github/
-          )
-        additional_dependencies:
-          - mdformat-gfm==0.3.5  # Mdformat plugin for GitHub Flavored Markdown compatibility » https://github.com/hukkin/mdformat-gfm/tags
-          - mdformat-toc==0.3.0  # Mdformat plugin to generate a table of contents » https://github.com/hukkin/mdformat-toc/tags
-          - mdformat-black==0.1.1  # Mdformat plugin to Blacken Python code blocks » https://github.com/hukkin/mdformat-black/tags
-          - mdformat-shfmt==0.1.0  # Mdformat plugin to format shell code blocks » https://github.com/hukkin/mdformat-shfmt/tags
-
-  - repo: https://github.com/tox-dev/tox-ini-fmt
-    rev: 1.3.1
-    hooks:
-      - id: tox-ini-fmt
-
-  - repo: https://github.com/tox-dev/pyproject-fmt
-    rev: 1.1.0
-    hooks:
-      - id: pyproject-fmt
-        args:
-          - --indent=4
-        additional_dependencies:
-          - tox>=4.10  # https://github.com/tox-dev/tox/releases/latest
-
-  - repo: https://github.com/abravalheri/validate-pyproject
-    rev: v0.14
-    hooks:
-      - id: validate-pyproject
-
-  - repo: https://github.com/pylint-dev/pylint
-    rev: v3.0.0a7
-    hooks:
-      - id: pylint
-        args:
-          - --py-version=3.8.0
